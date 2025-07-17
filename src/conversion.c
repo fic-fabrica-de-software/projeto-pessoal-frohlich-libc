@@ -259,7 +259,3 @@ loop:
 	x = x + frac / div;
 	return neg ? -x : x;
 }
-
-void* convert(const char* str, void* (*f)(const char*)) {
-	return f(str);
-}
