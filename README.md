@@ -1,2 +1,4 @@
-# mem_allocator
-made my own "malloc" for the funny, and i HATE, using libraries, i feel dirty when i include stdlib, so... here it is. malloc, renamed to alloc and free renamed to release.
+# new_libc
+it started with my own "malloc", when i was done i started making the rest of the libc, in a way that it is actually good to use. \
+LIKE WTF IS atoi()?!?! \
+I need to read the documentation to understand.
