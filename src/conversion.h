@@ -1,6 +1,8 @@
 #ifndef CONVERSION_H
 #define CONVERSION_H
 
+#define convert(str, func) (func(str))
+
 static inline const char* skip_whitespace(const char* str);
 static inline const char* check_sign(const char* str, char* neg);
 
@@ -17,7 +19,5 @@ unsigned long long to_ulong_long(const char* str);
 
 float to_float(const char* str);
 double to_double(const char* str);
-
-void* convert(const char* str, void* (*f)(const char*));
 
 #endif
