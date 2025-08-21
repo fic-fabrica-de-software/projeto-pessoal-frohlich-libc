@@ -93,23 +93,6 @@ loop:
 	return neg ? -x : x;
 }
 
-long long to_long_long(const char* str) {
-	const char* str_p = skip_whitespace(str);
-	long long x = 0;
-	char neg;
-	
-	str_p = check_sign(str_p, &neg);
-	
-loop:
-	if (*str_p >= 0x30 && *str_p <= 0x39) {
-		x = x * 10 + (*str_p - 0x30);
-		str_p++;
-		goto loop;
-	}
-
-	return neg ? -x : x;
-}
-
 unsigned char to_ubyte(const char* str) {
 	const char* str_p = skip_whitespace(str);
 	unsigned char x = 0;
@@ -182,23 +165,6 @@ loop:
 	return x;
 }
 
-unsigned long long to_ulong_long(const char* str) {
-	const char* str_p = skip_whitespace(str);
-	unsigned long long x = 0;
-	
-	if (*str_p == 0x2B) {
-		str_p++;
-	}
-	
-loop:
-	if (*str_p >= 0x30 && *str_p <= 0x39) {
-		x = x * 10 + (*str_p - 0x30);
-		str_p++;
-		goto loop;
-	}
-
-	return x;
-}
 
 float to_float(const char* str) {
 	const char* str_p = skip_whitespace(str);
