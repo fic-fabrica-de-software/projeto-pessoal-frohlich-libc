@@ -13,11 +13,11 @@ insertion_outer:
   insertion_inner:
     if (j >= left && *j > key) {
       *(j + 1) = *j;
-      j = j - 1;
+      j--;
       goto insertion_inner;
     }
     *(j + 1) = key;
-    i = i + 1;
+    i++;
     goto insertion_outer;
   }
 }
@@ -62,28 +62,28 @@ merge_loop:
   if (i < len1 && j < len2) {
     if (*(left_temp + i) <= *(right_temp + j)) {
       *(left + k) = *(left_temp + i);
-      i = i + 1;
+      i++;
     } else {
       *(left + k) = *(right_temp + j);
-      j = j + 1;
+      j++;
     }
-    k = k + 1;
+    k++;
     goto merge_loop;
   }
 
 copy_remaining_left:
   if (i < len1) {
     *(left + k) = *(left_temp + i);
-    i = i + 1;
-    k = k + 1;
+    i++;
+    k++;
     goto copy_remaining_left;
   }
 
 copy_remaining_right:
   if (j < len2) {
     *(left + k) = (right_temp + j);
-    j = j + 1;
-    k = k + 1;
+    j++;
+    k++;
     goto copy_remaining_right;
   }
 
