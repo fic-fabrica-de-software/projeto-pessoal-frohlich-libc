@@ -5,11 +5,11 @@ static unsigned long min(unsigned long a, unsigned long b) {
 }
 
 static void insertion_sort(int *left, int *right) {
-  int *i = left + 1;
+  int* i = left + 1;
 insertion_outer:
   if (i <= right) {
     int key = *i;
-    int *j = i - 1;
+    int* j = i - 1;
   insertion_inner:
     if (j >= left && *j > key) {
       *(j + 1) = *j;
@@ -22,22 +22,21 @@ insertion_outer:
   }
 }
 
-static void merge(int *left, int *mid, int *right) {
+static void merge(int* left, int* mid, int* right) {
   unsigned long len1 = mid - left + 1;
   unsigned long len2 = right - mid;
 
-  int *temp;
+  int* temp;
   unsigned long temp_size = (len1 + len2) * sizeof(int);
 
-  char *heap_ptr;
+  char* heap_ptr;
   unsigned long heap_offset = 0;
   goto allocate_temp;
 allocate_temp_return:
+  int* left_temp = (int*)temp;
+  int* right_temp = temp + len1;
 
-  int *left_temp = (int *)temp;
-  int *right_temp = temp + len1;
-
-  int *copy_ptr = left;
+  int* copy_ptr = left;
   unsigned long copy_count = 0;
 copy_left:
   if (copy_count < len1) {
@@ -92,8 +91,8 @@ free_temp_return:
   return;
 
 allocate_temp:
-  heap_ptr = (char *)&heap_offset + sizeof(unsigned long);
-  temp = (int *)heap_ptr;
+  heap_ptr = (char*)&heap_offset + sizeof(unsigned long);
+  temp = (int*)heap_ptr;
   heap_offset = temp_size;
   goto allocate_temp_return;
 
@@ -102,7 +101,7 @@ free_temp:
   goto free_temp_return;
 }
 
-static void timsort(int *arr, unsigned long n) {
+static inline void timsort(int* arr, unsigned long n) {
   unsigned long i = 0;
 sort_min_runs:
   if (i < n) {
