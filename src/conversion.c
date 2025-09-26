@@ -1,6 +1,6 @@
 #include "conversion.h"
 
-static inline const char* skip_whitespace(const char* str) {
+const char* skip_whitespace(const char* str) {
 	const char* str_p = str;
 loop:
 	if (*str_p == 0x20 || *str_p == 0x09) {
@@ -11,7 +11,7 @@ loop:
 	return str_p;
 }
 
-static inline const char* check_sign(const char* str, char* neg) {
+const char* check_sign(const char* str, char* neg) {
 	const char* str_p = str;
 	*neg = 0;
 	
@@ -164,7 +164,6 @@ loop:
 
 	return x;
 }
-
 
 float to_float(const char* str) {
 	const char* str_p = skip_whitespace(str);

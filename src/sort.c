@@ -1,10 +1,10 @@
 #include "sort.h"
 
-static unsigned long min(unsigned long a, unsigned long b) {
+unsigned long min(unsigned long a, unsigned long b) {
   return a < b ? a : b;
 }
 
-static void insertion_sort(int *left, int *right) {
+void insertion_sort(int *left, int *right) {
   int* i = left + 1;
 insertion_outer:
   if (i <= right) {
@@ -22,7 +22,7 @@ insertion_outer:
   }
 }
 
-static void merge(int* left, int* mid, int* right) {
+void merge(int* left, int* mid, int* right) {
   unsigned long len1 = mid - left + 1;
   unsigned long len2 = right - mid;
 
@@ -32,7 +32,9 @@ static void merge(int* left, int* mid, int* right) {
   char* heap_ptr;
   unsigned long heap_offset = 0;
   goto allocate_temp;
+
 allocate_temp_return:
+  ;
   int* left_temp = (int*)temp;
   int* right_temp = temp + len1;
 
@@ -80,7 +82,7 @@ copy_remaining_left:
 
 copy_remaining_right:
   if (j < len2) {
-    *(left + k) = (right_temp + j);
+    *(left + k) = *(right_temp + j);
     j++;
     k++;
     goto copy_remaining_right;
@@ -101,7 +103,7 @@ free_temp:
   goto free_temp_return;
 }
 
-static inline void timsort(int* arr, unsigned long n) {
+void timsort(int* arr, unsigned long n) {
   unsigned long i = 0;
 sort_min_runs:
   if (i < n) {
